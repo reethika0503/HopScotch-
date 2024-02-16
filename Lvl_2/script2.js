@@ -139,7 +139,7 @@ function incrementCorrectCount() {
   
   function nextLevel() {
     // Logic to proceed to the next level goes here
-    location.href="https://reethika0503.github.io/Level3.github.io/"
+    location.href="https://rudhraa-r.github.io/HopScotch-/Lvl_3/index3.html"
 
   }
   
