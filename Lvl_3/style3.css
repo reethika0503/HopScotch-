@@ -9,6 +9,12 @@
   padding: 0;
   box-sizing: border-box;
 }
+.inst{
+    font-size: large;
+    position: relative;
+    top: 120px;
+    left: 500px;
+}
 body {
   font-family: 'Montserrat', sans-serif;
   background-color: #eee;

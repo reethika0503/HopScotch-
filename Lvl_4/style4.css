@@ -481,3 +481,9 @@ align-items: center;
    
   }
 }
+.inst{
+    font-size: large;
+    position: relative;
+    top: 120px;
+    left: 500px;
+}
