@@ -7,11 +7,12 @@ const wrongCountElement = document.querySelector('.wrong-count .count');
 const energyFillElement = document.querySelector('.energy-fill');
 
 const maxCount = 8;
+const mincount = 8
 let correctCount = 0;
 let wrongCount = 0;
 
 // Array with IDs in ascending order
-const expectedOrder = ['one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight'];
+const expectedOrder = ['eight','seven', 'six','five','four','three','two','one'];
 
 draggableElements.forEach(elem => {
     elem.addEventListener("dragstart",dragStart);
@@ -56,8 +57,8 @@ function drop(event) {
             const newDiv = document.createElement("div");
         newDiv.classList.add("square.draggableElementData");
         event.target.insertBefore(newDiv, event.target.firstChild);
-        incrementCorrectCount();
-        if (correctCount === maxCount) {
+        decrementCorrectCount();
+        if (correctCount === mincount) {
             showCongratulations();
         }
     } 
@@ -98,7 +99,7 @@ function closeDiv() {
     overlay.style.display = "none";
 }
   
-function incrementCorrectCount() {
+function decrementCorrectCount() {
     correctCount++;
     correctCountElement.textContent = correctCount;
     updateEnergyBar();
@@ -139,5 +140,5 @@ function showCongratulations() {
 }
 
 function nextLevel() {
-    window.location.href = "https://rudhraa-r.github.io/HopScotch-/Lvl_4/index4.html";
+    window.location.href = "C:\\Users\\Rudhraa R\\Desktop\\HopScotch\\Main_Page\\main.html";
 }
