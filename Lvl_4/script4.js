@@ -75,7 +75,7 @@ function showNotification_2() {
     let wrong = document.createElement("span");
     wrong.classList.add("wrong-notif");
     notification.innerHTML = "";
-    wrong.innerHTML = `Oops, that is not in ascending order. Please arrange the tiles in ascending order.`;
+    wrong.innerHTML = `Oops, that is not in descending order. Please arrange the tiles in descending order.`;
     notification.append(wrong);
     notification.classList.add("show");
     overlay.style.display = "block";
@@ -86,7 +86,7 @@ function showNotification_1() {
     let wrong = document.createElement("span");
     wrong.classList.add("wrong-notif");
     notification.innerHTML = "";
-    wrong.innerHTML = `Oops, that is not right. Match the number with the correct word in the ascending order.`;
+    wrong.innerHTML = `Oops, that is not right. Match the number with the correct word in the descending order.`;
     notification.append(wrong);
     notification.classList.add("show");
     overlay.style.display = "block";
