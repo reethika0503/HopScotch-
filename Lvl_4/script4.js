@@ -140,5 +140,5 @@ function showCongratulations() {
 }
 
 function nextLevel() {
-    window.location.href = "C:\\Users\\Rudhraa R\\Desktop\\HopScotch\\Main_Page\\main.html";
+    window.location.href = "https://rudhraa-r.github.io/HopScotch-/Lvl_qa/index_qa.html";
 }
