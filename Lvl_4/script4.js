@@ -2,6 +2,8 @@ const draggableElements = document.querySelectorAll('.draggable');
 const droppableElements = document.querySelectorAll('.droppable');
 const notification = document.querySelector('.notification');
 const overlay = document.querySelector('.overlay');
+const instt = document.querySelector('.inst');
+const retry_lvl = document.querySelector('.retry_lvl');
 const correctCountElement = document.querySelector('.correct-count .count');
 const wrongCountElement = document.querySelector('.wrong-count .count');
 const energyFillElement = document.querySelector('.energy-fill');
@@ -59,6 +61,7 @@ function drop(event) {
         event.target.insertBefore(newDiv, event.target.firstChild);
         decrementCorrectCount();
         if (correctCount === mincount) {
+            stopTimer()
             showCongratulations();
         }
     } 
@@ -141,4 +144,80 @@ function showCongratulations() {
 
 function nextLevel() {
     window.location.href = "https://rudhraa-r.github.io/HopScotch-/Lvl_qa/index_qa.html";
+}
+function retryLevel (){
+    window.location.href = "https://rudhraa-r.github.io/HopScotch-/Lvl_4/index4.html";
+}
+const startButton = document.getElementById('startButton');
+const timerElement = document.querySelector('.timer');
+let timerCount = 20;
+let timerInterval;
+overlay.classList.add('show')
+startButton.addEventListener('click', startGame);
+function beforestart(){
+    overlay.style.display='block'
+    instt.classList.add('show');
+    startButton.style.display='block';
+ }
+beforestart();
+
+function startGame() {
+    // Hide the start button once the game starts
+    overlay.style.display='none';
+    startButton.style.display = 'none';
+    startTimer();
+
+}
+function startTimer() {
+    timerInterval = setInterval(() => {
+        timerCount--;
+        timerElement.textContent = timerCount;
+        if (timerCount === 0) {
+            clearInterval(timerInterval);
+            showRetryNotification();
+        }
+    }, 1000);
+}
+function stopTimer() {
+    clearInterval(timerInterval);
+}
+function showRetryNotification() {
+    const retryDiv = document.createElement("div");
+    retryDiv.classList.add("Retry");
+
+    overlay.style.display = "block";
+    const message = document.createElement("div");
+    message.textContent = "Time's up! Please retry to arrange the tiles within 20 seconds.";
+    retryDiv.appendChild(message);
+
+    const buttonContainer = document.createElement("div");
+    buttonContainer.classList.add("button-container");
+
+    const retryLevelButton = document.createElement("button");
+    retryLevelButton.textContent = "Retry Level";
+    retryLevelButton.classList.add("rb-notif");
+    retryLevelButton.addEventListener("click", retryLevel);
+    buttonContainer.appendChild(retryLevelButton)
+
+    retryDiv.appendChild(buttonContainer);
+    retry_lvl.classList.add("show");
+    retry_lvl.appendChild(retryDiv);
+    /*let retry = document.createElement("span");
+    retry.classList.add("retry-notif");
+    notification.innerHTML = "";
+    retry.innerHTML = `Time's up! Please retry to arrange the tiles within 16 seconds.`;
+    notification.append(retry);
+    notification.classList.add("show");
+    overlay.style.display = "block";
+
+
+    const buttonContainer = document.createElement("div");
+    buttonContainer.classList.add("button-container");
+
+    const retryLevelButton = document.createElement("button");
+    retryLevelButton.textContent = "Retry Level";
+    retryLevelButton.classList.add("rb-notif");
+    retryLevelButton.addEventListener("click", nextLevel);
+    buttonContainer.appendChild(retryLevelButton);
+    retry.append(button-container);*/
 }

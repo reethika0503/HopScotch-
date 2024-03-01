@@ -51,6 +51,7 @@ function drop(event) {
         incrementCorrectCount();
     const correctTiles = document.querySelectorAll('.dropped');
     if (correctTiles.length === 8) {
+      stopTimer()
       showCongratulations();
     }
   } else {
@@ -173,4 +174,75 @@ function shuffleArray(array) {
     const j = Math.floor(Math.random() * (i + 1));
     [array[i], array[j]] = [array[j], array[i]];
   }
+}
+function retryLevel (){
+  window.location.href = "https://rudhraa-r.github.io/HopScotch-/Lvl_2/index2.html";
+}
+startButton.addEventListener('click', startGame);
+function beforestart(){
+    overlay.style.display='block'
+    instt.classList.add('show');
+    startButton.style.display='block';
+ }
+beforestart();
+
+function startGame() {
+    // Hide the start button once the game starts
+    overlay.style.display='none';
+    startButton.style.display = 'none';
+    startTimer();
+
+}
+function startTimer() {
+    timerInterval = setInterval(() => {
+        timerCount--;
+        timerElement.textContent = timerCount;
+        if (timerCount === 0) {
+            clearInterval(timerInterval);
+            showRetryNotification();
+        }
+    }, 1000);
+}
+function stopTimer() {
+    clearInterval(timerInterval);
+}
+function showRetryNotification() {
+    const retryDiv = document.createElement("div");
+    retryDiv.classList.add("Retry");
+
+    overlay.style.display = "block";
+    const message = document.createElement("div");
+    message.textContent = "Time's up! Please retry to arrange the tiles within 20 seconds.";
+    retryDiv.appendChild(message);
+
+    const buttonContainer = document.createElement("div");
+    buttonContainer.classList.add("button-container");
+
+    const retryLevelButton = document.createElement("button");
+    retryLevelButton.textContent = "Retry Level";
+    retryLevelButton.classList.add("rb-notif");
+    retryLevelButton.addEventListener("click", retryLevel);
+    buttonContainer.appendChild(retryLevelButton)
+
+    retryDiv.appendChild(buttonContainer);
+    retry_lvl.classList.add("show");
+    retry_lvl.appendChild(retryDiv);
+    /*let retry = document.createElement("span");
+    retry.classList.add("retry-notif");
+    notification.innerHTML = "";
+    retry.innerHTML = `Time's up! Please retry to arrange the tiles within 16 seconds.`;
+    notification.append(retry);
+    notification.classList.add("show");
+    overlay.style.display = "block";
+
+
+    const buttonContainer = document.createElement("div");
+    buttonContainer.classList.add("button-container");
+
+    const retryLevelButton = document.createElement("button");
+    retryLevelButton.textContent = "Retry Level";
+    retryLevelButton.classList.add("rb-notif");
+    retryLevelButton.addEventListener("click", nextLevel);
+    buttonContainer.appendChild(retryLevelButton);
+    retry.append(button-container);*/
 }
