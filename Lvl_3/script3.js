@@ -146,6 +146,15 @@ function nextLevel() {
 function retryLevel (){
     window.location.href = "https://rudhraa-r.github.io/HopScotch-/Lvl_3/index3.html";
 }
+
+const instt = document.querySelector('.inst');
+const retry_lvl = document.querySelector('.retry_lvl');
+const startButton = document.getElementById('startButton');
+const timerElement = document.querySelector('.timer');
+let timerCount = 20;
+let timerInterval;
+overlay.classList.add('show')
+
 startButton.addEventListener('click', startGame);
 function beforestart(){
     overlay.style.display='block'
