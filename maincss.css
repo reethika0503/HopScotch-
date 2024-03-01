@@ -60,7 +60,7 @@ body{
 .levels{
     position: absolute;
     left: 520px;
-    top: 220px;
+    top: 240px;
     display: flex;
     flex-direction: column;
     width: 200px;
