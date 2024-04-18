@@ -62,7 +62,8 @@ body{
     left: 520px;
     top: 240px;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    flex-wrap: nowrap;
     width: 200px;
     height: 110px;
     align-items: center;
