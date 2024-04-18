@@ -123,3 +123,7 @@ function moveCharacter(numTiles) {
 
 // Initialize the game
 initializeGame();
+function redirectToNextPage() {
+  // Redirect to the next page
+  window.location.href = "https://rudhraa-r.github.io/HopScotch-/Hop_lvl/Hop%202/idx_hop2.html";
+}
