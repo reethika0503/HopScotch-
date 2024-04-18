@@ -7,15 +7,15 @@ const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
 
 
-// Store the buttons for place 5
-const place5Buttons = ['Hop', 'Hop', 'Hop'];
+// Store the buttons for place 1
+const place2Buttons = ['Hop','Hop','Skip','Hop','Jump'];
 const tiles = [1, 2, 3, 4, 5]
 let availableButtons;
 
 // Initialize the game
 function initializeGame() {
   // Set available buttons to place 5 buttons
-  availableButtons = place5Buttons;
+  availableButtons = place2Buttons;
   
   // Update button visibility
   updateButtonVisibility();
@@ -71,9 +71,9 @@ checkButton.addEventListener('click', function() {
   const currentOrder = Array.from(destinationContainer.children).map(button => button.id);
   
   if (isOrderCorrect(currentOrder, availableButtons)) {
-    alert(`Congratulations! You arranged the buttons correctly for place 5.`);
+    alert(`Congratulations! You arranged the buttons correctly for place 3 .`);
     // Additional logic for character movement or other actions can be added here
-    moveCharacter(3);
+    moveCharacter(6);
       
   } else {
     alert('Oops! The buttons are not in the correct order or some buttons are missing. Try again.');
@@ -105,17 +105,24 @@ function isOrderCorrect(currentOrder, requiredButtons) {
 let yPosition = 0;
 
 function moveCharacter(numTiles) {
-  if (numTiles <= 0) return; // Base case: Stop recursion when numTiles is 0 or negative
-
+  if (numTiles <= 0) {
+    showOverlay()
+    return; // Base case: Stop recursion when numTiles is 0 or negative
+  }
   // Move the character forward by 1 tile
-  yPosition += 75;
-  character.style.transform = `translateY(${-yPosition}px)`;
+  const isthirdMove = numTiles === 4;
+
+  if (isthirdMove) {
+    // Skip the first tile and jump to the second tile
+    yPosition += 75 * 2; // Skip the first tile and move directly to the second tile
+    character.style.transform = `translateY(${-yPosition}px)`;
+  } else {
+    // Move the character forward by 1 tile
+    yPosition += 80;
+    character.style.transform = `translateY(${-yPosition}px)`;
+  }
 
   // Move diagonally to the right in the last move
-
-
-  
-
   // Call the function recursively with one less move after a 1-second delay
   setTimeout(() => moveCharacter(numTiles - 1), 1000);
 }
@@ -127,3 +134,45 @@ function moveCharacter(numTiles) {
 
 // Initialize the game
 initializeGame();
+initializeGame();
+function redirectToNextPage() {
+  // Redirect to the next page
+  window.location.href = "https://rudhraa-r.github.io/HopScotch-/Hop_lvl/Hop%203/idx_hop3.html";
+}
+
+function Startover() {
+  // Redirect to the next page
+  window.location.href = "https://rudhraa-r.github.io/HopScotch-/Hop_lvl/Hop%202/idx_hop2.html";
+}
+
+function showOverlay() {
+  const overlay = document.createElement('div');
+  overlay.classList.add('overlay');
+  document.body.appendChild(overlay);
+  
+  const overlayContent = document.createElement('div');
+  overlayContent.classList.add('overlay-content');
+  overlay.appendChild(overlayContent);
+  
+  const overlayMessage = document.createElement('p');
+  overlayMessage.textContent = 'Congratulations! You completed this level.';
+  overlayContent.appendChild(overlayMessage);
+  
+  const redirectButton = document.createElement('button');
+  redirectButton.textContent = 'Next Level';
+  redirectButton.addEventListener('click', redirectToNextPage);
+  overlayContent.appendChild(redirectButton);
+
+  const startover = document.createElement('button');
+  startover.textContent = 'Start Over';
+  startover.addEventListener('click', Startover);
+  overlayContent.appendChild(startover);
+}
+
+// Function to remove overlay
+function removeOverlay() {
+  const overlay = document.querySelector('.overlay');
+  if (overlay) {
+    overlay.remove();
+  }
+}
