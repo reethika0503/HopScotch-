@@ -39,3 +39,14 @@ a{
     color: beige;
     font-size: 16px;
 }
+.instr{
+    color: rgb(0, 0, 0);
+    font-size: 40px;
+    position: relative;
+    height: 40px;
+    width: 700px;
+    left: 350px;
+    top: 100px;
+    align-items: center;
+    justify-content: center;
+}
