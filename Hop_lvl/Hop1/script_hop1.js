@@ -142,6 +142,10 @@ function Startover() {
   // Redirect to the next page
   window.location.href = "https://rudhraa-r.github.io/HopScotch-/Hop_lvl/Hop1/idx_hop1.html";
 }
+function Mainlvl() {
+  // Redirect to the next page
+  window.location.href = "https://rudhraa-r.github.io/HopScotch-/Hop_lvl/index_hop.html";
+}
 
 function showOverlay() {
   const overlay = document.createElement('div');
@@ -165,6 +169,11 @@ function showOverlay() {
   startover.textContent = 'Start Over';
   startover.addEventListener('click', Startover);
   overlayContent.appendChild(startover);
+
+  const mainlvl = document.createElement('button');
+  mainlvl.textContent = 'Main Levels';
+  mainlvl.addEventListener('click', Mainlvl);
+  overlayContent.appendChild(mainlvl);
 }
 
 // Function to remove overlay
