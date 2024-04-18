@@ -199,6 +199,12 @@ function showRetryNotification() {
     retryLevelButton.addEventListener("click", retryLevel);
     buttonContainer.appendChild(retryLevelButton)
 
+    const mainLevelButton = document.createElement("button");
+    mainLevelButton.textContent = "Main Page";
+    mainLevelButton.classList.add("play-button");
+    mainLevelButton.addEventListener("click", mainLevel);
+    buttonContainer.appendChild(mainLevelButton);
+
     retryDiv.appendChild(buttonContainer);
     retry_lvl.classList.add("show");
     retry_lvl.appendChild(retryDiv);
@@ -221,3 +227,8 @@ function showRetryNotification() {
     buttonContainer.appendChild(retryLevelButton);
     retry.append(button-container);*/
 }
+
+function mainLevel() {
+    // Logic to proceed to the next level goes here
+   return window.location.href = "https://rudhraa-r.github.io/HopScotch-/main.html"
+  }

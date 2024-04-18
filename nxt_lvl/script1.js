@@ -121,6 +121,12 @@ function showCongratulations() {
     nextLevelButton.classList.add("play-button");
     nextLevelButton.addEventListener("click", nextLevel);
     buttonContainer.appendChild(nextLevelButton);
+
+    const mainLevelButton = document.createElement("button");
+    mainLevelButton.textContent = "Main Page";
+    mainLevelButton.classList.add("play-button");
+    mainLevelButton.addEventListener("click", mainLevel);
+    buttonContainer.appendChild(mainLevelButton);
   
     /*const exitButton = document.createElement("button");
     exitButton.textContent = "Exit";
@@ -141,4 +147,9 @@ function showCongratulations() {
 function nextLevel() {
     // Logic to proceed to the next level goes here
    return window.location.href = "https://rudhraa-r.github.io/HopScotch-/Lvl_2/index2.html"
+}
+
+function mainLevel() {
+  // Logic to proceed to the next level goes here
+ return window.location.href = "https://rudhraa-r.github.io/HopScotch-/main.html"
 }
