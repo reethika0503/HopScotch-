@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": "../../Downloads/Hop_lvl"
+		},
+		{
+			"path": "../HPI/.vscode"
+		}
+	],
+	"settings": {
+		"liveServer.settings.port": 5501,
+		"liveServer.settings.multiRootWorkspaceName": "Hop_lvl"
+	}
+}

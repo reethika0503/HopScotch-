@@ -21,27 +21,18 @@ body {
   background-image: linear-gradient(to right,#859398, #859398);
   background-repeat: none;
 }
-
-/*.draggable-elements {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin: 7rem;
-}*/
 .draggable-elements {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  
   margin: 3rem;
   position: relative;
   top: 90px;
   
 }
 .droppable-elements{
-  position: relative;
+position: relative;
 top: 120px;
 left: 600px;
 display: flex;
@@ -84,24 +75,7 @@ align-items: center;
 .draggable:hover {
   opacity: 0.5;
 }
-/*.droppable {
-  height: 5.5rem;
-  width: 5.5rem;
-  margin: 1rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position:fixed;
-  flex-direction: column;
- flex-direction: row;
-  text-align: center;
-  font-size: 4rem;
-  font-weight: bold;
-  background-color: #fff;
-  border: 3px dashed #111;
-  border-radius: 7px;
-  transition: border-width 0.2s, transform 0.2s, background-color 0.4s;
-}*/
+
 .droppable span {
   font-size: 1.25rem;
   pointer-events: none; /* The element is never the target of pointer events */
@@ -194,17 +168,6 @@ align-items: center;
   position: relative;
   bottom: 414px;
 }
-/*.wrong-notif{
-  display: block;
-  width: 500px;
-  height: 500px;
-  background-color: lightcoral;
-  align-items: center;
-  text-align: center;
-  top: 0;
-  left: 0;
-  
-}*/
 .overlay {
   position: fixed;
   top: 0;
@@ -238,7 +201,8 @@ align-items: center;
   top: 0px;
   right: 0px;
   padding: 10px;
-  background-color: transparent;
+  background-color: #ccc;
+  border-radius: 20px;
   text-align: right;
   font-family: Arial, sans-serif;
   font-size: 14px;
@@ -341,6 +305,8 @@ align-items: center;
     transform: translateY(0);
   }
 }
+
+/* the following @media stylings are to make the tiles responsive for different screen size */
 @media only screen and (max-width: 1400px) {
   
   
