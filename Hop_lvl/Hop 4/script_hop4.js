@@ -7,15 +7,15 @@ const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
 
 
-// Store the buttons for place 1
-const place2Buttons = ['Hop','Skip','Jump','Hop','Jump'];
-const tiles = [1, 2, 3, 4, 5]
+// Store the buttons for place 4
+const place4Buttons = ['Hop','Hop','Hop','Skip','Hop','Hop','Jump'];
+//const tiles = [1, 2, 3, 4, 5]
 let availableButtons;
 
 // Initialize the game
 function initializeGame() {
-  // Set available buttons to place 5 buttons
-  availableButtons = place2Buttons;
+  // Set available buttons to place 4 buttons
+  availableButtons = place4Buttons;
   
   // Update button visibility
   updateButtonVisibility();
@@ -32,15 +32,15 @@ function updateButtonVisibility() {
     buttons.forEach(button => {
       button.style.display = 'block';
     });
-  /*
-    // Hide buttons that are not required for place 5
+  
+    // Hide buttons that are not required for place 4
     buttons.forEach(button => {
       const buttonId = button.id;
       const isButtonAvailable = availableButtons.includes(buttonId);
       if (!isButtonAvailable) {
         button.style.display = 'none';
       }
-    });*/
+    });
 }
 
 // Add event listeners for drag and drop functionality
@@ -57,10 +57,10 @@ destinationContainer.addEventListener('drop', function(event) {
   const buttonId = event.dataTransfer.getData('text/plain');
   const draggedButton = document.getElementById(buttonId);
   
-  // Check if the button is available for place 5
+  // Check if the button is available for place 4
   const isButtonAvailable = availableButtons.includes(buttonId);
   
-  // Only move the button if it is available for place 5
+  // Only move the button if it is available for place 4
   if (isButtonAvailable) {
     destinationContainer.appendChild(draggedButton);
   }
@@ -71,9 +71,9 @@ checkButton.addEventListener('click', function() {
   const currentOrder = Array.from(destinationContainer.children).map(button => button.id);
   
   if (isOrderCorrect(currentOrder, availableButtons)) {
-    alert(`Congratulations! You arranged the buttons correctly for place 2 .`);
+    alert(`Congratulations! You arranged the buttons correctly for place 3 .`);
     // Additional logic for character movement or other actions can be added here
-    moveCharacter(6);
+    moveCharacter(7);
       
   } else {
     alert('Oops! The buttons are not in the correct order or some buttons are missing. Try again.');
@@ -86,7 +86,7 @@ function resetGame() {
       buttonContainer.appendChild(destinationContainer.firstChild);
     }
     // Set available buttons back to place 5 buttons
-    availableButtons = place2Buttons;
+    availableButtons = place5Buttons;
     updateButtonVisibility();
 }
 
@@ -110,12 +110,14 @@ function moveCharacter(numTiles) {
     return; // Base case: Stop recursion when numTiles is 0 or negative
   }
   // Move the character forward by 1 tile
-  const issecMove = numTiles === 5;
+  const isfourthMove = numTiles === 4;
 
-  if (issecMove) {
+  if (isfourthMove) {
     // Skip the first tile and jump to the second tile
-    yPosition += 75 * 2; // Skip the first tile and move directly to the second tile
+    yPosition += 75 * 1; // Skip the first tile and move directly to the second tile
+    
     character.style.transform = `translateY(${-yPosition}px)`;
+    character.style.transform += ` translateX(50px)`;
   } else {
     // Move the character forward by 1 tile
     yPosition += 80;

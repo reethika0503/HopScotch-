@@ -9,12 +9,12 @@ const ctx = canvas.getContext('2d');
 
 // Store the buttons for place 1
 const place1Buttons = ['Skip','Hop','Jump','Hop','Jump'];
-const tiles = [1, 2, 3, 4, 5]
+//const tiles = [1, 2, 3, 4, 5]
 let availableButtons;
 
 // Initialize the game
 function initializeGame() {
-  // Set available buttons to place 5 buttons
+  // Set available buttons to place 1 buttons
   availableButtons = place1Buttons;
   
   // Update button visibility
@@ -33,14 +33,14 @@ function updateButtonVisibility() {
       button.style.display = 'block';
     });
   
-    // Hide buttons that are not required for place 5
-    buttons.forEach(button => {
+    // Hide buttons that are not required for place 1
+   /* buttons.forEach(button => {
       const buttonId = button.id;
       const isButtonAvailable = availableButtons.includes(buttonId);
       if (!isButtonAvailable) {
         button.style.display = 'none';
       }
-    });
+    });*/
 }
 
 // Add event listeners for drag and drop functionality
@@ -57,10 +57,10 @@ destinationContainer.addEventListener('drop', function(event) {
   const buttonId = event.dataTransfer.getData('text/plain');
   const draggedButton = document.getElementById(buttonId);
   
-  // Check if the button is available for place 5
+  // Check if the button is available for place 1
   const isButtonAvailable = availableButtons.includes(buttonId);
   
-  // Only move the button if it is available for place 5
+  // Only move the button if it is available for place 1
   if (isButtonAvailable) {
     destinationContainer.appendChild(draggedButton);
   }
@@ -85,8 +85,8 @@ function resetGame() {
     while (destinationContainer.firstChild) {
       buttonContainer.appendChild(destinationContainer.firstChild);
     }
-    // Set available buttons back to place 5 buttons
-    availableButtons = place5Buttons;
+    // Set available buttons back to place 1 buttons
+    availableButtons = place1Buttons;
     updateButtonVisibility();
 }
 
@@ -134,6 +134,8 @@ function moveCharacter(numTiles) {
 
 // Initialize the game
 initializeGame();
+
+
 function redirectToNextPage() {
   // Redirect to the next page
   window.location.href = "https://rudhraa-r.github.io/HopScotch-/Hop_lvl/Hop%202/idx_hop2.html";

@@ -7,15 +7,15 @@ const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
 
 
-// Store the buttons for place 1
-const place2Buttons = ['Hop','Hop','Skip','Hop','Jump'];
-const tiles = [1, 2, 3, 4, 5]
+// Store the buttons for place 3
+const place3Buttons = ['Hop','Hop','Skip','Jump','Hop','Jump'];
+//const tiles = [1, 2, 3, 4, 5]
 let availableButtons;
 
 // Initialize the game
 function initializeGame() {
-  // Set available buttons to place 5 buttons
-  availableButtons = place2Buttons;
+  // Set available buttons to place 3 buttons
+  availableButtons = place3Buttons;
   
   // Update button visibility
   updateButtonVisibility();
@@ -33,7 +33,7 @@ function updateButtonVisibility() {
       button.style.display = 'block';
     });
   
-    // Hide buttons that are not required for place 5
+    // Hide buttons that are not required for place 3
     buttons.forEach(button => {
       const buttonId = button.id;
       const isButtonAvailable = availableButtons.includes(buttonId);
@@ -57,10 +57,10 @@ destinationContainer.addEventListener('drop', function(event) {
   const buttonId = event.dataTransfer.getData('text/plain');
   const draggedButton = document.getElementById(buttonId);
   
-  // Check if the button is available for place 5
+  // Check if the button is available for place 3
   const isButtonAvailable = availableButtons.includes(buttonId);
   
-  // Only move the button if it is available for place 5
+  // Only move the button if it is available for place 3
   if (isButtonAvailable) {
     destinationContainer.appendChild(draggedButton);
   }

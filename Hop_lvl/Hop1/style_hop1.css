@@ -3,13 +3,13 @@ body{
   display: block;
   display: flex;
 }
-  .container{
+.container{
     position: relative;
     top: 120px;
     display: flex;
     flex-direction: row;
-  }
-  #buttonContainer {
+}
+#buttonContainer {
       display: flex;
       gap: 10px;
       padding: 10px;
@@ -98,12 +98,6 @@ body{
       transition: transform 0.3s ease;
       z-index: 10;
     }
-    .droppable-elements{
-      position: relative;
-      display: flex;
-      flex-wrap: wrap;
-  
-      }
       img {
         width: 400px;
         height: 500px;
@@ -209,9 +203,6 @@ body{
     width: 100px;
   }
   
-  @media screen {
-    
-  }
   .cjump{
     transform: translateY(-50px);
     transition-duration: 1s;
