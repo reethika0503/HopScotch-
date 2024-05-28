@@ -24,6 +24,8 @@ const levelSequences = {
 let availableButtons;
 let currentLevel = lvlNo.innerHTML;
 console.log(currentLevel); // Set the initial level or dynamically determine the level
+let nextlvl = parseInt(currentLevel) +1 ;
+console.log(nextlvl);
 
 // Initialize the game
 function initializeGame(level) {
@@ -231,12 +233,12 @@ function moveCharacterRun(buttonSequence) {
 
 function redirectToNextPage() {
   // Redirect to the next page
-  window.location.href = `https://rudhraa-r.github.io/HopScotch-/Hop_lvl/idx_hop(${currentLevel + 1}).html`;
+  window.location.href = `https://rudhraa-r.github.io/HopScotch-/Hop_lvl/idx_hop${nextlvl}.html`;
 }
 
 function Startover() {
   // Redirect to the next page
-  window.location.href = `https://rudhraa-r.github.io/HopScotch-/Hop_lvl/idx_hop(${currentLevel}).html`;
+  window.location.href = `https://rudhraa-r.github.io/HopScotch-/Hop_lvl/idx_hop${currentLevel}.html`;
 }
 
 function Mainlvl() {
@@ -256,16 +258,17 @@ function showOverlay() {
   const overlayMessage = document.createElement('p');
   overlayMessage.textContent = 'Congratulations! You completed this level.';
   overlayContent.appendChild(overlayMessage);
+  
+  const startover = document.createElement('button');
+  startover.textContent = 'Start Over';
+  startover.addEventListener('click', Startover);
+  overlayContent.appendChild(startover);
+
 
   const redirectButton = document.createElement('button');
   redirectButton.textContent = 'Next Level';
   redirectButton.addEventListener('click', redirectToNextPage);
   overlayContent.appendChild(redirectButton);
-
-  const startover = document.createElement('button');
-  startover.textContent = 'Start Over';
-  startover.addEventListener('click', Startover);
-  overlayContent.appendChild(startover);
 
   const mainlvl = document.createElement('button');
   mainlvl.textContent = 'Main Levels';
