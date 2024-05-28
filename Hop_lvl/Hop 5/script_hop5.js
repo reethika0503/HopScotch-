@@ -1,25 +1,29 @@
 const buttonContainer = document.getElementById('buttonContainer');
 const destinationContainer = document.getElementById('destinationContainer');
-const lvlNo = document.getElementsByClassName('headingText')
+const lvlNo = document.getElementById('headingText');
 const checkButton = document.getElementById('checkButton');
 const resetButton = document.getElementById('resetButton');
+const runButton = document.getElementById('runButton');
 const character = document.getElementById('character');
 const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
 
 // Store the button sequences for each level
 const levelSequences = {
-  1: ['Hop', 'Skip', 'Jump'],
-  2: ['Hop', 'Hop', 'Skip', 'Jump'],
-  3: ['Jump', 'Skip', 'Hop', 'Hop'],
-  4: ['Hop', 'Hop', 'Hop', 'Skip', 'Hop', 'Hop', 'Jump'],
-  5: ['Hop', 'Hop', 'Hop','Skip-HopRight','Hop', 'Jump'], // Example level with right skip
-  6: ['Hop', 'SkipLeft', 'Hop'], // Example level with left skip
+  1: ['Skip','Hop','Hop','Jump','Hop','Jump'],
+  2: ['Hop','Skip','Hop','Jump','Hop','Jump'],
+  3: ['Hop','Hop','Skip','Jump','Hop','Jump'],
+  4: ['Hop', 'Hop', 'Hop', 'Skip-HopRight', 'Hop', 'Jump'],
+  5: ['Hop', 'Hop', 'Hop','Skip-HopLeft','Hop', 'Jump'], // Example level with right skip
+  6: ['Hop','Hop','Hop','Jump','Skip','Jump'],
+  7: ['Hop', 'Hop', 'Hop','Jump','Hop','Skip-HopRight'],
+  8: ['Hop', 'Hop', 'Hop','Jump','Hop','Skip-HopLeft' ], // Example level with left skip
   // Add more levels as needed
 };
 
 let availableButtons;
-let currentLevel = 4; // Set the initial level or dynamically determine the level
+let currentLevel = lvlNo.innerHTML;
+console.log(currentLevel); // Set the initial level or dynamically determine the level
 
 // Initialize the game
 function initializeGame(level) {
@@ -78,16 +82,30 @@ destinationContainer.addEventListener('drop', function(event) {
 // Check the order when the check button is clicked
 checkButton.addEventListener('click', function() {
   const currentOrder = Array.from(destinationContainer.children).map(button => button.id);
+  character.style.transform = `translateY(${0}px) translateX(${0}px)`;
 
   if (isOrderCorrect(currentOrder, availableButtons)) {
     alert(`Congratulations! You arranged the buttons correctly for place ${currentLevel}.`);
     // Move the character based on the arranged buttons
     moveCharacter(currentOrder);
   } else {
-    alert('Oops! The buttons are not in the correct order or some buttons are missing. Try again.');
+    alert('Oops! The buttons are not in the correct order or some buttons are missing. Use the run button to animate.');
   }
 });
 
+runButton.addEventListener('click', function(){
+  const currentOrder = Array.from(destinationContainer.children).map(button => button.id);
+
+    if(isOrderCorrect(currentOrder,availableButtons)){
+
+      moveCharacterRun(currentOrder);
+    }else{
+
+      moveCharacterRun(currentOrder);
+      
+    }
+  
+});
 // Reset the game
 function resetGame() {
   while (destinationContainer.firstChild) {
@@ -95,6 +113,7 @@ function resetGame() {
   }
   // Set available buttons back to the current level buttons
   availableButtons = levelSequences[currentLevel];
+  character.style.transform = `translateY(${0}px) translateX(${0}px)`;
   updateButtonVisibility();
 }
 
@@ -116,10 +135,64 @@ let xPosition = 0;
 
 function moveCharacter(buttonSequence) {
   let index = 0;
-
+  character.style.transform = `translateY(${0}px) translateX(${0}px)`;
   function moveNext() {
     if (index >= buttonSequence.length) {
       showOverlay();
+      return;
+    }
+
+    const buttonId = buttonSequence[index];
+    let moveDistance;
+    
+    switch (buttonId) {
+      case 'Hop':
+        moveDistance = { y: 80, x: 0 };
+        break;
+      case 'Skip':
+        moveDistance = { y: 150, x: 0 }; // Skip moves by two tiles
+        break;
+      case 'Jump':
+        moveDistance = { y: 80, x: 0 }; // Jump moves by three tiles
+        break;
+      case 'Skip-HopRight':
+        moveDistance = { y: 80, x: 32 }; // Skip right by moving down and right
+        break;
+      case 'Skip-HopLeft':
+        moveDistance = { y: 80, x: -32 }; // Skip left by moving down and left
+        break;
+      default:
+        moveDistance = { y: 0, x: 0 };
+        break;
+    }
+
+    yPosition += moveDistance.y;
+    xPosition = moveDistance.x;
+    character.style.transform = `translateY(${-yPosition}px) translateX(${xPosition}px)`;
+
+    index++;
+    setTimeout(moveNext, 1000); // Delay before the next move
+  }
+
+  moveNext();
+}
+
+function moveCharacterRun(buttonSequence) {
+  let index = 0;
+
+  function moveNext() {
+    if (index >= buttonSequence.length) {
+      const currentOrder = Array.from(destinationContainer.children).map(button => button.id);
+      if(isOrderCorrect(currentOrder , availableButtons)){
+        alert('The order is right , now arrange the buttons again use the check button to finish the level');
+        resetGame();
+      }else{
+        alert('The order is not right or its incomplete. Check the animation & Try again !!');
+        resetGame();
+      }
+      character.style.transform = `translateY(${0}px) translateX(${0}px)`;
+      xPosition = 0;
+      yPosition = 0;
       return;
     }
 
@@ -139,8 +212,8 @@ function moveCharacter(buttonSequence) {
       case 'Skip-HopRight':
         moveDistance = { y: 80, x: 32 }; // Skip right by moving down and right
         break;
-      case 'SkipLeft':
-        moveDistance = { y: 80, x: -80 }; // Skip left by moving down and left
+      case 'Skip-HopLeft':
+        moveDistance = { y: 80, x: -32 }; // Skip left by moving down and left
         break;
       default:
         moveDistance = { y: 0, x: 0 };
@@ -148,7 +221,7 @@ function moveCharacter(buttonSequence) {
     }
 
     yPosition += moveDistance.y;
-    xPosition += moveDistance.x;
+    xPosition = moveDistance.x;
     character.style.transform = `translateY(${-yPosition}px) translateX(${xPosition}px)`;
 
     index++;

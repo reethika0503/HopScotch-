@@ -34,13 +34,13 @@ function updateButtonVisibility() {
     });
   
     // Hide buttons that are not required for place 1
-   /* buttons.forEach(button => {
+    buttons.forEach(button => {
       const buttonId = button.id;
       const isButtonAvailable = availableButtons.includes(buttonId);
       if (!isButtonAvailable) {
         button.style.display = 'none';
       }
-    });*/
+    });
 }
 
 // Add event listeners for drag and drop functionality
