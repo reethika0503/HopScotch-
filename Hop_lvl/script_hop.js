@@ -5,6 +5,8 @@ const checkButton = document.getElementById('checkButton');
 const resetButton = document.getElementById('resetButton');
 const runButton = document.getElementById('runButton');
 const character = document.getElementById('character');
+const jump =document.getElementById('jump');
+const hop =document.getElementById('hop');
 const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
 
@@ -150,18 +152,26 @@ function moveCharacter(buttonSequence) {
     switch (buttonId) {
       case 'Hop':
         moveDistance = { y: 80, x: 0 };
+        hop.style.display = 'block';
+        jump.style.display ='none';
         break;
       case 'Skip':
         moveDistance = { y: 150, x: 0 }; // Skip moves by two tiles
         break;
       case 'Jump':
-        moveDistance = { y: 80, x: 0 }; // Jump moves by three tiles
+        moveDistance = { y: 80, x: 0 };
+        hop.style.display = 'none';
+        jump.style.display ='block'; // Jump moves by three tiles
         break;
       case 'Skip-HopRight':
         moveDistance = { y: 80, x: 32 }; // Skip right by moving down and right
+        hop.style.display = 'block';
+        jump.style.display ='none';
         break;
       case 'Skip-HopLeft':
         moveDistance = { y: 80, x: -32 }; // Skip left by moving down and left
+        hop.style.display = 'block';
+        jump.style.display ='none';
         break;
       default:
         moveDistance = { y: 0, x: 0 };
@@ -202,18 +212,28 @@ function moveCharacterRun(buttonSequence) {
     switch (buttonId) {
       case 'Hop':
         moveDistance = { y: 80, x: 0 };
+        hop.style.display = 'block';
+        jump.style.display ='none';
         break;
       case 'Skip':
-        moveDistance = { y: 150, x: 0 }; // Skip moves by two tiles
+        moveDistance = { y: 150, x: 0 };
+        hop.style.display = 'block';
+        jump.style.display ='none'; // Skip moves by two tiles
         break;
       case 'Jump':
-        moveDistance = { y: 80, x: 0 }; // Jump moves by three tiles
+        moveDistance = { y: 80, x: 0 };
+        hop.style.display = 'none';
+        jump.style.display ='block'; // Jump moves by three tiles
         break;
       case 'Skip-HopRight':
         moveDistance = { y: 80, x: 32 }; // Skip right by moving down and right
+        hop.style.display = 'block';
+        jump.style.display ='none';
         break;
       case 'Skip-HopLeft':
         moveDistance = { y: 80, x: -32 }; // Skip left by moving down and left
+        hop.style.display = 'block';
+        jump.style.display ='none';
         break;
       default:
         moveDistance = { y: 0, x: 0 };
@@ -258,7 +278,7 @@ function showOverlay() {
   const overlayMessage = document.createElement('p');
   overlayMessage.textContent = 'Congratulations! You completed this level.';
   overlayContent.appendChild(overlayMessage);
-  
+
   const startover = document.createElement('button');
   startover.textContent = 'Start Over';
   startover.addEventListener('click', Startover);

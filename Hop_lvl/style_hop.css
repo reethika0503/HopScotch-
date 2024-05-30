@@ -248,10 +248,17 @@ body{
         size: 10px;
         z-index: 1000000000
       }
-      .icon{
+      .icon-jump{
         height: 60px;
         width: 60px;
-        z-index: 1000000000
+        z-index: 1000000000;
+        display: none;
+      }
+      .icon-hop{
+        height: 60px;
+        width: 60px;
+        z-index: 1000000000;
+        display :block
       }
 
       .overlay {
