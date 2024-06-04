@@ -211,7 +211,7 @@ function showCongratulations() {
 
 // Function to proceed to the next level
 function nextLevel() {
-    window.location.href = "https://rudhraa-r.github.io/HopScotch-/Lvl_qa/index_qa.html";
+    window.location.href = "https://rudhraa-r.github.io/HopScotch-/Lvl_5/index.html";
 }
 
 // Function to retry the current level
