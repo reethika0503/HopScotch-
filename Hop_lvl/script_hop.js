@@ -76,10 +76,12 @@ destinationContainer.addEventListener('drop', function(event) {
 
   // Check if the button is available for the current level
   const isButtonAvailable = availableButtons.includes(buttonId);
-
+  
   // Only move the button if it is available for the current level
   if (isButtonAvailable) {
     destinationContainer.appendChild(draggedButton);
+    draggedButton.setAttribute("draggable", "false");
+    draggedButton.style.cursor = 'no-drop';
   }
 });
 
@@ -114,11 +116,17 @@ checkButton.addEventListener('click', function(){
 function resetGame() {
   while (destinationContainer.firstChild) {
     buttonContainer.appendChild(destinationContainer.firstChild);
-  }
+    const buttons = Array.from(buttonContainer.children);
+    buttons.forEach(button => {
+      button.setAttribute("draggable", "true");
+      button.style.cursor ='move';
+
+  });
   // Set available buttons back to the current level buttons
   availableButtons = levelSequences[currentLevel];
   character.style.transform = `translateY(${0}px) translateX(${0}px)`;
   updateButtonVisibility();
+}
 }
 
 // Check if the order is correct and all required buttons are present
