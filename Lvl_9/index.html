@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Table</title>
+    <title>Level 9</title>
     <style>
         body {
             display: flex;
@@ -58,8 +58,11 @@
             font-family: 'Montserrat', sans-serif;
         }
         .button-container {
+            justify-content: center;
+            align-items: center;
             display: flex;
-            flex-direction: column;
+           
+            flex-direction: row;
             align-items: center;
             margin-top: 20px;
         }
@@ -81,9 +84,10 @@
             </tbody>
         </table>
         <div class="button-container">
-            <button id="validateBtn">Check Answer</button><br>
-            <button id="nextLevelBtn" style="display: none;">Next Level</button><br>
-            <button id="replayLevelBtn" style="display: none;">Replay Level</button>
+            <button id="replayLevelBtn" style="display: none;">Replay Level</button><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>  
+            <button id="validateBtn">Check Answer</button><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+                <button id="nextLevelBtn" style="display: none;">Next Level</button>
+               
             
         </div>
     </div>
@@ -192,9 +196,9 @@
                             const parentTd = cell.parentElement;
                             
                             if (selectedValue === expectedValue) {
-                                parentTd.innerHTML = `<span style="color: dark green;">${selectedValue} &#10003;</span>`;
+                                parentTd.innerHTML = `<span style="color: dark green; font-weight: bolder;">${selectedValue} &#10003;</span>`;
                             } else {
-                                parentTd.innerHTML = `<span style="color: red;">${selectedValue} &#10007 &nbsp;</span> <span style="color: dark green;">${expectedValue} &#10003;</span>`;
+                                parentTd.innerHTML = `<span style="color: white;">${selectedValue} &#10007 &nbsp;</span> <span style="color: dark green; font-weight: bolder;">${expectedValue} &#10003;</span>`;
                                 allCorrect = false; // If any answer is incorrect
                             }
                         }
