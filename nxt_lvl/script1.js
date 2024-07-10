@@ -201,7 +201,7 @@ function replay() {
 
 // Function to go to the next level
 function nextLevel() {
-    window.location.href = "https://khushi9827.github.io/Hop-Scotch/HopScotch-/Lvl_2/index2.html";
+    window.location.href = "https://reethika0503.github.io/HopScotch-.github.io/Lvl_2/index2.html";
 }
 
 // Function to go to the main page
