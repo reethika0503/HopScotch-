@@ -12,7 +12,7 @@ const startButton = document.getElementById('startButton');
 const timerElement = document.querySelector('.timer');
 
 // Initialize timer and game counters
-let timerCount = 20;
+let timerCount = 25;
 let timerInterval;
 const maxCount = 8;
 let correctCount = 0;
