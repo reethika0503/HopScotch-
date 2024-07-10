@@ -12,7 +12,7 @@ const startButton = document.getElementById('startButton');
 const timerElement = document.querySelector('.timer');
 
 // Initial timer count and interval variable
-let timerCount = 20;
+let timerCount = 25;
 let timerInterval;
 
 // Show overlay at the start
@@ -237,7 +237,7 @@ function showRetryNotification() {
 
     overlay.style.display = "block";
     const message = document.createElement("div");
-    message.textContent = "Time's up! Please retry to arrange the tiles within 20 seconds.";
+    message.textContent = "Time's up! Please retry to arrange the tiles within 25 seconds.";
     retryDiv.appendChild(message);
 
     const buttonContainer = document.createElement("div");

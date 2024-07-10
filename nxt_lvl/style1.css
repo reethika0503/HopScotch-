@@ -21,7 +21,21 @@ body {
   background-image: linear-gradient(to right,#859398, #859398);
   background-repeat: none;
 }
+.inst{
+    font-size: large;
+    position: relative;
+    top: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+ .inst.show{
+  opacity: 1;
+} 
+
 .draggable-elements {
+  font-size: 4rem;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -32,6 +46,7 @@ body {
   
 }
 .droppable-elements{
+font-size: 3.5rem;
 position: relative;
 top: 120px;
 left: 600px;
@@ -77,7 +92,7 @@ align-items: center;
 }
 
 .droppable span {
-  font-size: 1.25rem;
+  font-size: 3.5rem;
   pointer-events: none; /* The element is never the target of pointer events */
 }
 
@@ -94,8 +109,8 @@ align-items: center;
   color: #fff;
 }
 .droppable.dropped span {
-  font-size: 0.75rem;
-  margin-top: 0.5rem;
+  font-size: 3.5rem;
+  margin-top: 3.5rem;
 }
 .droppable.dropped div {
   pointer-events: none;
@@ -284,6 +299,7 @@ align-items: center;
   background-color: rgba(255,255,255,0.5); /* Use a slightly different color on hover */
   animation: buttonBounce 0.5s;
 }
+
 
 @keyframes buttonScale {
   0% {
